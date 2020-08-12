@@ -1,0 +1,32 @@
+
+<div class="row">
+  <div class="col-3">
+    <h5> All Categories </h5>
+    <div class="list-group">
+      <a *ngFor='let c of categories' (click)='onDetail(c)' 
+      class="list-group-item list-group-item-action"
+      [class.active]="category === c.$key"
+      >
+        {{ c.category }}
+      </a>
+    </div>
+  </div>
+  <div class="col">
+    <div class="container">
+      <div class="row">
+          <div class="col-md-6" *ngFor="let item of filteredData">
+              <div class="card m-4" style="width: 18rem;">
+                  <img src="{{item.url}}" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">{{item.title | summary }}</h5>
+                    <p class="card-text">{{item.price | currency:'INR':true}}</p>
+                    <button class="btn btn-primary btn-sm">Add</button>
+                  </div>
+                </div>
+          </div>
+      </div>
+  </div>
+  </div>
+</div>
+
+
