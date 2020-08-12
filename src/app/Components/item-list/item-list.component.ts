@@ -15,7 +15,7 @@ export class ItemListComponent implements OnInit {
   products: any;
   filteredData: any;
   private _searchTerm: string;
-  categories:any;
+  categories: any;
   category: string;
   filteredProduct: [];
 
@@ -26,9 +26,7 @@ export class ItemListComponent implements OnInit {
   @Input()
   set searchTerm(value: string) {
     this._searchTerm = value;
-    console.log(this._searchTerm);
     this.filteredData = this.filterProduct(value);
-    console.log(this.filteredData);
   }
 
   constructor(private data: DataService,private route: ActivatedRoute,private router : Router) {}
@@ -37,16 +35,11 @@ export class ItemListComponent implements OnInit {
     this.data.getData()
       .subscribe((data) => {
         this.items = data;
-        console.log(this.items);
         this.filteredData = this.items;
-        console.log(this.filteredData);
-
         this.categories = data;
 
         this.route.queryParamMap.subscribe((params: ParamMap) => {
           this.category = params.get('category');
-          console.log(this.category);
-
           this.filteredData = (this.category) ?
           this.items.filter(p => p.category === this.category) : this.items;
         });

@@ -23,6 +23,5 @@ export class AppComponent implements OnInit {
   searchFun()  {
     let filter = (<HTMLInputElement>document.getElementById('myInput')).value;
     this.title = filter;
-    console.log(this.title);
   }
 }
